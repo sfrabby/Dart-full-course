@@ -1,27 +1,48 @@
 import 'dart:io';
 
-void main(){
+void main() {
+  print("Enter operator (+, -, *, /):");
+  String? operator = stdin.readLineSync();
 
-  String?Function = "+";
-  print("Enter your operator (+-*/)");
-  Function = stdin.readLineSync();
+  print("Enter first number:");
+  double? num1 = double.tryParse(stdin.readLineSync()!);
 
-  switch(Function){
-    case "+": {
-      var Num1;
-      var Num2;
-      var Result;
-      print("-------Wellcome to Sum-------");
-      print("Inter your 1st number");
-      Num1 = double.tryParse(stdin.readLineSync()!);
-      print("Inter your 2nd Number ");
-      Num2 = double.tryParse(stdin.readLineSync()!);
+  print("Enter second number:");
+  double? num2 = double.tryParse(stdin.readLineSync()!);
 
-      Result = Num1 + Num2;
-      print("Your Sum of $Num1 and $Num2 is $Result");
+  if (num1 == null || num2 == null) {
+    print("Invalid number!");
+    return;
+  }
 
+  double result;
 
-    }
+  switch (operator) {
+    case "+":
+      result = num1 + num2;
+      print("Result = $result");
+      break;
 
+    case "-":
+      result = num1 - num2;
+      print("Result = $result");
+      break;
+
+    case "*":
+      result = num1 * num2;
+      print("Result = $result");
+      break;
+
+    case "/":
+      if (num2 == 0) {
+        print("Cannot divide by zero!");
+      } else {
+        result = num1 / num2;
+        print("Result = $result");
+      }
+      break;
+
+    default:
+      print("Invalid operator!");
   }
 }
